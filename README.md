@@ -1,2 +1,1 @@
-# qtopt-prototype
-Build QTOpt. prototype using Streamlit.
+# YATAIGA - Your Quantum Research Assistant.
