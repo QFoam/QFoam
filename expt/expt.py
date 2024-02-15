@@ -167,6 +167,7 @@ class Expt:
                     for _target in targets:
                         selected = st.checkbox(
                             label = str(_target),
+                            key = key + str(_target)
                         )
                         if selected:
                             _selected_targets.append(_target)
@@ -202,9 +203,38 @@ class Expt:
                 if st.button("Submit"):
                     self.qsim = rdq.QSim(self.qsystem)
                     for key in self.hamiltonian.keys():
-                        qsim.add_oprator(
+                        self.qsim.add_operator(
                             key = key,
                             target = self.hamiltonian[key]["target"],
                             pulse_info = self.hamiltonian[key]["pulse"],
                             dm_info = self.hamiltonian[key]["dm"]
                         )
+    def popevo(
+        self
+    ):
+        col1, col2, col3 = st.columns(3)
+        # Enter initial state
+        with col1:
+            init_state = st.text_input(
+                label = 'initial state',
+                placeholder = '00 for ∣00⟩'
+            )
+        # Set operation time, number of samples and qutip.solver.Options
+        with col2:
+            operation_time = st.number_input(
+                label = 'operation time',
+                value = 10
+            )
+        with col3:
+            num_samples = st.number_input(
+                label = 'number of samples',
+                value = 100
+            )
+        
+        if st.button("run"):
+            state_evo = self.qsim.run_expt(
+                init_state = self.qsystem.generate_state(init_state),
+                operation_time = operation_time,
+                num_samples = num_samples
+            )
+            st.write(state_evo)

@@ -23,3 +23,4 @@ if __name__ == "__main__":
     st.divider()
 
     st.header('Collect Data🏃‍♀️') 
+    st.session_state.expt.popevo()
