@@ -14,7 +14,7 @@ if __name__ == "__main__":
         st.session_state.expt = Expt()
 
     with st.sidebar:
-        st.title('YATAIGA \n :rainbow[Your Quantum Research Assistant.]')
+        st.title('YATAIGA \n :rainbow[Simulate your quantum system with natural language.]')
         st.session_state.expt.set_qspecies()
         st.session_state.expt.set_qsystem()
 
@@ -22,5 +22,5 @@ if __name__ == "__main__":
 
     st.divider()
 
-    st.header('Collect Data🏃‍♀️') 
+    st.subheader('Collect Data 🏃‍♀️') 
     st.session_state.expt.popevo()
