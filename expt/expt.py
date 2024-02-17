@@ -180,16 +180,6 @@ class Expt:
                     self.hamiltonian[key]['pulse']["constant"] = _constant
                     self.hamiltonian[key]['pulse']["phase"] = _phase
 
-                if st.button("Submit"):
-                    self.qsim = rdq.QSim(self.qsystem)
-                    for key in self.hamiltonian.keys():
-                        self.qsim.add_operator(
-                            key = key,
-                            target = self.hamiltonian[key]["target"],
-                            pulse_info = self.hamiltonian[key]["pulse"],
-                            dm_info = self.hamiltonian[key]["dm"]
-                        )
-
             with st.container(border=True):
                 st.write(':violet[Step 5] - Target Subsystem 🎯')
                 _delete = []
@@ -213,6 +203,16 @@ class Expt:
                     self.hamiltonian[key]["target"] = _selected_targets
                 for key in _delete:
                     del self.hamiltonian[key]
+
+            if st.button("Submit"):
+                self.qsim = rdq.QSim(self.qsystem)
+                for key in self.hamiltonian.keys():
+                    self.qsim.add_operator(
+                        key = key,
+                        target = self.hamiltonian[key]["target"],
+                        pulse_info = self.hamiltonian[key]["pulse"],
+                        dm_info = self.hamiltonian[key]["dm"]
+                    )
 
         # Debug
         if self.qsim is not None:

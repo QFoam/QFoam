@@ -1,0 +1,11 @@
+*.swp
+__pycache__/
+
+# Setuptools distribution and build folders.
+build/
+
+# Virtualenv
+/env
+
+# Python egg metadata, regenerated from source files by setuptools.
+/*.egg-info
