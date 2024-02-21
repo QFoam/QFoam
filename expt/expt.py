@@ -162,7 +162,7 @@ class Expt:
                     }
                     self.hamiltonian_latex[_label] = '$%s\ %s\ (%s)$' %(_label, _constant, _operator)
             with st.container(border=True):
-                st.write(':blue[Step 4] - Pulse 🔦')
+                st.write(':blue[Step 4] - Pulse (MHz) 🔦')
                 for key in self.hamiltonian.keys():
                     col1, col2 = st.columns((1, 3))
                     with col1:
@@ -232,7 +232,7 @@ class Expt:
         # Set operation time, number of samples and qutip.solver.Options
         with col2:
             operation_time = st.number_input(
-                label = 'operation time',
+                label = 'operation time ($\mu$s)',
                 value = 10
             )
         with col3:
@@ -247,6 +247,7 @@ class Expt:
                 operation_time = operation_time,
                 num_samples = num_samples
             )
+            st.write(":green[You are all set!👍👍👍]")
             # Debug
             # st.write(state_evo)
 
