@@ -14,7 +14,7 @@ if __name__ == "__main__":
         st.session_state.expt = Expt()
 
     with st.sidebar:
-        st.title('YATAIGA \n :rainbow[Simulate your quantum system with natural language.]')
+        st.title('YATAIGA \n :rainbow[Quantum Simulation with Natural Language.]')
         st.session_state.expt.set_qspecies()
         st.session_state.expt.set_qsystem()
 
